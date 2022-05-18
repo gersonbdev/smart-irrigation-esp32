@@ -3,6 +3,10 @@
 * [Gerson Benavides](https://github.com/gersonbdev)
 * [Fabian Figueroa]()
 
-## ESP32-Examples
+## Terceros
 
-Este proyecto se baso en los ejemplos del repositorio [ESP32-Examples](https://github.com/luisllamasbinaburo/ESP32-Examples) del autor [Luis Llamas](https://github.com/luisllamasbinaburo).
+Este proyecto se baso en los ejemplos de los siguientes repositorios:
+
+*  [ESP32-Examples](https://github.com/luisllamasbinaburo/ESP32-Examples) del autor [Luis Llamas](https://github.com/luisllamasbinaburo).
+
+* [ESP32-MQTT](https://github.com/survivingwithandroid/ESP32-MQTT/tree/master) del autor [Francesco Azzola](https://github.com/survivingwithandroid)

@@ -1,15 +1,15 @@
 #include <Arduino.h>
 #include <WiFi.h>
 
-#include "esp32_utils.hpp"
+#include "wifi_utilities.hpp"
 
-extern const char *ssid;
-extern const char *password;
-extern const char *hostname;
+const char *ssid     = "GERSON-WIFI";
+const char *password = "\\(privata-reto)/";
+const char *hostname = "SMART_IRRIGATION";
 
-extern IPAddress ip;
-extern IPAddress gateway;
-extern IPAddress subnet;
+IPAddress ip(192, 168, 1, 200);
+IPAddress gateway(192, 168, 1, 1);
+IPAddress subnet(255, 255, 255, 0);
 
 void connect_wifi_sta(bool use_static_ip)
 {
@@ -25,8 +25,7 @@ void connect_wifi_sta(bool use_static_ip)
                 Serial.print('.'); 
         }
  
-        Serial.println("");
-        Serial.print("Iniciado STA:\t");
+        Serial.print("\nStarted STA:\t");
         Serial.println(ssid);
         Serial.print("IP address:\t");
         Serial.println(WiFi.localIP());
@@ -45,8 +44,7 @@ void connect_wifi_ap(bool use_static_ip)
         if (use_static_ip)
                 WiFi.softAPConfig(ip, gateway, subnet);
 
-        Serial.println("");
-        Serial.print("Iniciado AP:\t");
+        Serial.print("\nStarted AP:\t");
         Serial.println(ssid);
         Serial.print("IP address:\t");
         Serial.println(WiFi.softAPIP());
