@@ -10,26 +10,43 @@ extern uint16_t MQTT_PORT;
 extern const char *MQTT_CLIENT_NAME;
 
 extern WiFiClient espClient;
-extern PubSubClient mqttClient;
+extern PubSubClient mqttClient1;
+extern PubSubClient mqttClient2;
 
 void init_mqtt() 
 {
-        mqttClient.setServer(MQTT_BROKER_ADRESS, MQTT_PORT);
+        mqttClient1.setServer(MQTT_BROKER_ADRESS, MQTT_PORT);
+        mqttClient2.setServer(MQTT_BROKER_ADRESS, MQTT_PORT);
         suscribe_mqtt();
-        mqttClient.setCallback(on_mqtt_received);
+        mqttClient1.setCallback(on_mqtt_received);
+        mqttClient2.setCallback(on_mqtt_received);
 }
 
 
 void connect_mqtt()
 {
-        while (!mqttClient.connected())	{		
+        while (!mqttClient1.connected())	{		
                 Serial.print("Starting MQTT connection...");
 
-                if (mqttClient.connect(MQTT_CLIENT_NAME)) {
+                if (mqttClient1.connect(MQTT_CLIENT_NAME)) {
                         suscribe_mqtt();
                 } else {
                         Serial.print("Failed MQTT connection, rc=");
-                        Serial.print(mqttClient.state());
+                        Serial.print(mqttClient1.state());
+                        Serial.println(" try again in 5 seconds");
+
+                        delay(5000);
+                }
+        }
+
+        while (!mqttClient2.connected())	{		
+                Serial.print("Starting MQTT connection...");
+
+                if (mqttClient2.connect(MQTT_CLIENT_NAME)) {
+                        suscribe_mqtt();
+                } else {
+                        Serial.print("Failed MQTT connection, rc=");
+                        Serial.print(mqttClient2.state());
                         Serial.println(" try again in 5 seconds");
 
                         delay(5000);
@@ -40,8 +57,11 @@ void connect_mqtt()
 
 void handle_mqtt()
 {
-        if (!mqttClient.connected()) {
+        if (!mqttClient1.connected()) {
                 connect_mqtt();
         }
-        mqttClient.loop();
+        if (!mqttClient2.connected()) {
+                connect_mqtt();
+        }
+        mqttClient1.loop();
 }

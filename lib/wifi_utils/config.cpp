@@ -2,8 +2,8 @@
 
 #include "config.hpp"
 
-const char *ssid     = "gerson-motorola";
-const char *password = "aoesito123";
+const char *ssid     = "GERSON-WIFI";
+const char *password = "\\(privata-reto)/";
 const char *hostname = "ESP32_1";
 
 IPAddress ip(192, 168, 1, 200);

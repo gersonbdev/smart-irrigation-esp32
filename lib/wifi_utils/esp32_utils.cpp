@@ -1,6 +1,5 @@
+#include <Arduino.h>
 #include <WiFi.h>
-#include <SPIFFS.h>
-#include <PubSubClient.h>
 
 #include "esp32_utils.hpp"
 

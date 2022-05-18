@@ -23,7 +23,7 @@ void loop()
 {
         handle_mqtt();
 
-        publis_mqtt(millis());
+        publis_mqtt(1, 2);
 
         delay(1000);
 }
