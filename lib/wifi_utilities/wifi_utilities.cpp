@@ -21,8 +21,8 @@ void connect_wifi_sta(bool use_static_ip)
                 WiFi.config(ip, gateway, subnet);
         
         while (WiFi.status() != WL_CONNECTED) { 
+                Serial.print('.');
                 delay(100);  
-                Serial.print('.'); 
         }
  
         Serial.print("\nStarted STA:\t");

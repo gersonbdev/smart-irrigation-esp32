@@ -3,7 +3,13 @@
 
 #include "mqtt_utilities.hpp"
 
-const char *MQTT_BROKER_ADRESS = "192.168.1.102";//"broker.hivemq.com";
+/*
+ * MQTT Brokers
+ * test.mosquitto.org
+ * broker.hivemq.com
+*/
+
+const char *MQTT_BROKER_ADRESS = "test.mosquitto.org"; 
 uint16_t MQTT_PORT = 1883;
 const char *MQTT_CLIENT_NAME = "SMART_IRRIGATION";
 
